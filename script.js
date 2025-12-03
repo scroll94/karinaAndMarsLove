@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
     initAnimations();
     initProgressBars();
-    initHoverEffects();
     initScrollEffects();
     
     // Консольное приветствие
@@ -149,7 +148,7 @@ function initMobileMenu() {
 function initAnimations() {
     // Анимация появления элементов
     const animatedElements = document.querySelectorAll(
-        '.hobby-card, .family-member, .subject-card, .wildrift-card, .timeline-item, .goal-card, .game-item'
+        '.hobby-card, .family-member, .subject-card, .wildrift-card, .timeline-item, .goal-card, .game-item, .fact'
     );
     
     const observer = new IntersectionObserver((entries) => {
@@ -189,51 +188,13 @@ function initAnimations() {
     });
 }
 
-// Эффекты при наведении
-function initHoverEffects() {
-    // Эффект для карточек хобби
-    const hobbyCards = document.querySelectorAll('.hobby-card');
-    hobbyCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.zIndex = '10';
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            setTimeout(() => {
-                card.style.zIndex = '1';
-            }, 300);
-        });
-    });
-    
-    // Эффект для статистики
-    const stats = document.querySelectorAll('.stat, .wr-stat, .footer-stat');
-    stats.forEach(stat => {
-        stat.addEventListener('mouseenter', () => {
-            stat.style.transform = stat.style.transform + ' scale(1.05)';
-        });
-        
-        stat.addEventListener('mouseleave', () => {
-            stat.style.transform = stat.style.transform.replace(' scale(1.05)', '');
-        });
-    });
-}
-
 // Эффекты скролла
 function initScrollEffects() {
-    // Параллакс эффект
-    let lastScroll = 0;
-    
+    // Анимация навигации при скролле
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
-        const heroSection = document.querySelector('.hero-section');
-        
-        if (heroSection) {
-            const speed = 0.5;
-            heroSection.style.transform = `translateY(${scrolled * speed}px)`;
-        }
-        
-        // Анимация навигации при скролле
         const navbar = document.querySelector('.navbar');
+        
         if (navbar) {
             if (scrolled > 100) {
                 navbar.style.background = 'rgba(15, 23, 42, 0.98)';
@@ -245,20 +206,6 @@ function initScrollEffects() {
                 navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
             }
         }
-        
-        // Анимация появления элементов
-        const elements = document.querySelectorAll('.hobby-card, .family-member');
-        const windowHeight = window.innerHeight;
-        
-        elements.forEach(el => {
-            const position = el.getBoundingClientRect().top;
-            
-            if (position < windowHeight - 100) {
-                el.classList.add('visible');
-            }
-        });
-        
-        lastScroll = scrolled;
     });
 }
 
@@ -313,17 +260,6 @@ window.addEventListener('load', function() {
     
     setTimeout(() => {
         document.body.style.opacity = '1';
-        
-        // Запускаем анимации после загрузки
-        setTimeout(() => {
-            const elements = document.querySelectorAll('.hobby-card, .family-member');
-            elements.forEach((el, index) => {
-                setTimeout(() => {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                }, index * 100);
-            });
-        }, 300);
     }, 100);
     
     // Проверка поддержки IntersectionObserver
@@ -331,7 +267,7 @@ window.addEventListener('load', function() {
         console.log('Браузер не поддерживает IntersectionObserver, используем fallback');
         // Простой fallback для старых браузеров
         window.addEventListener('scroll', function() {
-            const elements = document.querySelectorAll('.hobby-card, .family-member');
+            const elements = document.querySelectorAll('.hobby-card, .family-member, .fact');
             const windowHeight = window.innerHeight;
             
             elements.forEach(el => {
@@ -346,7 +282,7 @@ window.addEventListener('load', function() {
         
         // Запускаем сразу для видимых элементов
         setTimeout(() => {
-            const elements = document.querySelectorAll('.hobby-card, .family-member');
+            const elements = document.querySelectorAll('.hobby-card, .family-member, .fact');
             const windowHeight = window.innerHeight;
             
             elements.forEach(el => {
