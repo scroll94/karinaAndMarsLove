@@ -1,50 +1,28 @@
-// Основной скрипт - исправленная версия
+// Упрощенный и безопасный скрипт для GitHub Pages
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Сайт Карины Бахтигареевой загружен!');
+    console.log('🚀 Сайт Карины Бахтигареевой загружен!');
     
-    // Инициализация
-    initNavigation();
-    initScrollProgress();
-    
-    // Показываем меню при загрузке
-    const navLinks = document.querySelector('.nav-links');
-    if (window.innerWidth > 992) {
-        navLinks.style.display = 'flex';
-    }
-    
-    // Запуск анимаций
-    setTimeout(checkAnimations, 300);
+    // Инициализация только безопасных функций
+    initSafeNavigation();
+    initSimpleProgress();
+    initBasicAnimations();
 });
 
-// Навигация - исправленная версия
-function initNavigation() {
+// Безопасная навигация
+function initSafeNavigation() {
     const navbar = document.querySelector('.navbar');
     const navLinks = document.querySelectorAll('.nav-link');
     const menuToggle = document.querySelector('.menu-toggle');
-    const sections = document.querySelectorAll('.section');
-    const navLinksContainer = document.querySelector('.nav-links');
     
-    // Проверяем элементы
-    if (!navbar || !navLinksContainer) {
-        console.log('Навигация не найдена');
-        return;
-    }
+    if (!navbar || !navLinks.length) return;
     
-    // Мобильное меню
+    // Мобильное меню - простой вариант
     if (menuToggle) {
         menuToggle.addEventListener('click', function() {
-            if (navLinksContainer.style.display === 'flex') {
-                navLinksContainer.style.display = 'none';
-            } else {
-                navLinksContainer.style.display = 'flex';
-                navLinksContainer.style.flexDirection = 'column';
-                navLinksContainer.style.position = 'absolute';
-                navLinksContainer.style.top = '100%';
-                navLinksContainer.style.left = '0';
-                navLinksContainer.style.width = '100%';
-                navLinksContainer.style.background = 'var(--dark)';
-                navLinksContainer.style.padding = '20px';
-                navLinksContainer.style.gap = '15px';
+            const navContainer = document.querySelector('.nav-links');
+            if (navContainer) {
+                const currentDisplay = window.getComputedStyle(navContainer).display;
+                navContainer.style.display = currentDisplay === 'none' ? 'flex' : 'none';
             }
         });
     }
@@ -53,7 +31,6 @@ function initNavigation() {
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-            
             const targetId = this.getAttribute('href');
             const targetSection = document.querySelector(targetId);
             
@@ -63,22 +40,28 @@ function initNavigation() {
                     behavior: 'smooth'
                 });
                 
-                // Закрытие меню на мобильных
+                // Обновляем активную ссылку
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Закрываем меню на мобильных
                 if (window.innerWidth <= 992) {
-                    navLinksContainer.style.display = 'none';
+                    const navContainer = document.querySelector('.nav-links');
+                    if (navContainer) navContainer.style.display = 'none';
                 }
             }
         });
     });
     
     // Активная ссылка при скролле
-    function updateActiveNav() {
+    window.addEventListener('scroll', function() {
+        const sections = document.querySelectorAll('.section');
         let current = '';
-        const scrollPos = window.scrollY + 100;
         
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
+            const scrollPos = window.scrollY + 100;
             
             if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
                 current = section.getAttribute('id');
@@ -91,10 +74,8 @@ function initNavigation() {
                 link.classList.add('active');
             }
         });
-    }
-    
-    // Стиль навигации при скролле
-    window.addEventListener('scroll', function() {
+        
+        // Фиксированная навигация
         if (window.scrollY > 100) {
             navbar.style.background = 'rgba(15, 23, 42, 0.98)';
             navbar.style.padding = '1rem 5%';
@@ -102,75 +83,71 @@ function initNavigation() {
             navbar.style.background = 'rgba(15, 23, 42, 0.95)';
             navbar.style.padding = '1.5rem 5%';
         }
-        
-        updateActiveNav();
     });
-    
-    // Инициализация
-    updateActiveNav();
 }
 
-// Прогресс-бар
-function initScrollProgress() {
+// Простой прогресс-бар
+function initSimpleProgress() {
     const progressBar = document.getElementById('progressBar');
-    
-    if (!progressBar) {
-        console.log('Прогресс-бар не найден');
-        return;
-    }
+    if (!progressBar) return;
     
     window.addEventListener('scroll', function() {
         const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        if (windowHeight > 0) {
-            const scrolled = (window.scrollY / windowHeight) * 100;
-            progressBar.style.width = `${scrolled}%`;
-        }
+        const scrolled = (window.scrollY / windowHeight) * 100;
+        progressBar.style.width = scrolled + '%';
     });
 }
 
-// Анимации при скролле - исправленная версия
-function checkAnimations() {
-    const elements = document.querySelectorAll('.about-card, .family-member, .subject-card, .game-card, .timeline-item');
-    
-    elements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
+// Базовые анимации
+function initBasicAnimations() {
+    // Простая функция для анимации
+    function animateOnScroll() {
+        const elements = document.querySelectorAll('.about-card, .family-member, .subject-card, .game-card, .timeline-item');
         
-        if (elementTop < windowHeight * 0.8) {
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)';
-        }
-    });
-}
-
-// Изначально скрываем анимированные элементы
-const animatedElements = document.querySelectorAll('.about-card, .family-member, .subject-card, .game-card, .timeline-item');
-if (animatedElements.length > 0) {
+        elements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (elementTop < windowHeight * 0.85) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }
+        });
+    }
+    
+    // Изначально скрываем элементы
+    const animatedElements = document.querySelectorAll('.about-card, .family-member, .subject-card, .game-card, .timeline-item');
     animatedElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
-        el.style.transition = 'all 0.6s ease';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     });
     
-    // Проверка при скролле
-    window.addEventListener('scroll', checkAnimations);
+    // Запускаем сразу и при скролле
+    setTimeout(animateOnScroll, 300);
+    window.addEventListener('scroll', animateOnScroll);
 }
 
-// Показываем меню при ресайзе
+// Автоматическое управление меню при ресайзе
 window.addEventListener('resize', function() {
     const navLinks = document.querySelector('.nav-links');
     if (!navLinks) return;
     
     if (window.innerWidth > 992) {
         navLinks.style.display = 'flex';
-        navLinks.style.flexDirection = 'row';
-        navLinks.style.position = 'static';
-        navLinks.style.background = 'transparent';
-        navLinks.style.padding = '0';
     } else {
         navLinks.style.display = 'none';
     }
+});
+
+// Простая проверка загрузки
+window.addEventListener('load', function() {
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.5s ease';
     
-    // Перезапускаем анимации
-    checkAnimations();
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+    }, 100);
+    
+    console.log('✅ Все ресурсы загружены');
 });
