@@ -19,11 +19,9 @@
         .container { max-width: 1200px; margin: 0 auto; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
         .highlight { color: #8b5cf6; }
-        /* Сброс если CSS не загрузился */
-        .no-css body { background: linear-gradient(135deg, #0f172a, #1e1b4b); }
     </style>
     <!-- Основной CSS с версией -->
-    <link rel="stylesheet" href="style.css?v=2.0">
+    <link rel="stylesheet" href="style.css?v=3.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -35,7 +33,7 @@
         <div class="logo">Карина Б.</div>
         <div class="nav-links">
             <a href="#hero" class="nav-link active">Главная</a>
-            <a href="#about" class="nav-link">Обо мне</a>
+            <a href="#hobbies" class="nav-link">Хобби</a>
             <a href="#family" class="nav-link">Семья</a>
             <a href="#study" class="nav-link">Учёба</a>
             <a href="#games" class="nav-link">Игры</a>
@@ -56,22 +54,37 @@
                     
                     <div class="hero-description">
                         <p><strong>Ну, днем я обычная девочка, живущая обычной школьной жизнью, но кое-что обо мне не знает никто…</strong></p>
-                        <p>Каждую ночь, ровно в три часа, я просыпаюсь, и смотрю в окно, и вижу там не ворона, а тень, которая повторяет мои движения. Вчера она мне помахала. И я, кажется, помахала в ответ.</p>
+                        <p>Каждую ночь, ровно в три часа, я просыпаюсь от одного и того же звука — тихого постукивания в окно. И вижу там не ворона, а тень, которая повторяет мои движения. Вчера она мне помахала. И я, кажется, помахала в ответ.</p>
                         <p class="secret">(Из комплексов у меня только Гольджи)</p>
                     </div>
                     
                     <div class="hero-stats">
                         <div class="stat">
-                            <div class="stat-number">2222+</div>
-                            <div class="stat-label">игр в Wild Rift</div>
+                            <div class="stat-icon">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number">Будущий врач</div>
+                                <div class="stat-label">Медицинский университет</div>
+                            </div>
                         </div>
                         <div class="stat">
-                            <div class="stat-number">2000+</div>
-                            <div class="stat-label">часов в играх</div>
+                            <div class="stat-icon">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number">Мейнер Нами</div>
+                                <div class="stat-label">Wild Rift</div>
+                            </div>
                         </div>
                         <div class="stat">
-                            <div class="stat-number">1-е</div>
-                            <div class="stat-label">место в турнире</div>
+                            <div class="stat-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number">Участник турниров</div>
+                                <div class="stat-label">Победитель</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -79,9 +92,18 @@
                 <div class="hero-image">
                     <div class="image-frame">
                         <div class="image-placeholder">
-                            <i class="fas fa-user-md"></i>
-                            <p>Будущий врач</p>
-                            <small>Уфа, Россия</small>
+                            <div class="avatar-circle">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <div class="image-text">
+                                <h3>Карина Бахтигареева</h3>
+                                <p>Будущий врач</p>
+                                <small>Уфа, Россия</small>
+                            </div>
+                            <div class="image-tags">
+                                <span class="tag"><i class="fas fa-heartbeat"></i> Медицина</span>
+                                <span class="tag"><i class="fas fa-gamepad"></i> Геймер</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -89,45 +111,73 @@
         </div>
     </section>
 
-    <!-- Обо мне -->
-    <section id="about" class="section">
+    <!-- Хобби -->
+    <section id="hobbies" class="section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Обо <span class="highlight">мне</span></h2>
-                <p class="section-subtitle">Что я люблю и чем увлекаюсь</p>
+                <h2 class="section-title">Мои <span class="highlight">хобби</span></h2>
+                <p class="section-subtitle">Что делает мою жизнь интереснее</p>
             </div>
             
-            <div class="about-grid">
-                <div class="about-card">
-                    <div class="card-icon">
-                        <i class="fas fa-cookie-bite"></i>
+            <div class="hobbies-grid">
+                <div class="hobby-card hobby-sweets">
+                    <div class="hobby-overlay"></div>
+                    <div class="hobby-content">
+                        <div class="hobby-icon">
+                            <i class="fas fa-cookie-bite"></i>
+                        </div>
+                        <h3>Сладкоежка</h3>
+                        <p>Milka, Kinder, Raffaello и торт "Пчёлка" — моя слабость. Особенно после сложной учёбы или интенсивной игры.</p>
+                        <div class="hobby-details">
+                            <span class="detail"><i class="fas fa-star"></i> Любимое: Raffaello</span>
+                            <span class="detail"><i class="fas fa-fire"></i> Энергия для игр</span>
+                        </div>
                     </div>
-                    <h3>Сладости</h3>
-                    <p>Обожаю Milka, Kinder, Raffaello и торт "Пчёлка". Сладкое — моя слабость, особенно после долгого дня учёбы.</p>
                 </div>
                 
-                <div class="about-card">
-                    <div class="card-icon">
-                        <i class="fas fa-gamepad"></i>
+                <div class="hobby-card hobby-games">
+                    <div class="hobby-overlay"></div>
+                    <div class="hobby-content">
+                        <div class="hobby-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3>Игромания</h3>
+                        <p>Wild Rift — моя страсть! Провожу часы за стратегиями и командной игрой. Также обожаю сюжетные игры.</p>
+                        <div class="hobby-details">
+                            <span class="detail"><i class="fas fa-water"></i> Мейн: Нами</span>
+                            <span class="detail"><i class="fas fa-trophy"></i> Турнирный опыт</span>
+                        </div>
                     </div>
-                    <h3>Игры</h3>
-                    <p>Wild Rift — моя страсть! 2222+ игр, 2000+ часов. Также играю в CS:GO 2, Detroit, Borderlands 3.</p>
                 </div>
                 
-                <div class="about-card">
-                    <div class="card-icon">
-                        <i class="fas fa-film"></i>
+                <div class="hobby-card hobby-series">
+                    <div class="hobby-overlay"></div>
+                    <div class="hobby-content">
+                        <div class="hobby-icon">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <h3>Киноман</h3>
+                        <p>Игра Престолов — лучший сериал! Пересматриваю постоянно. Также нравится Ганнибал — очень жесткий и атмосферный сериал.</p>
+                        <div class="hobby-details">
+                            <span class="detail"><i class="fas fa-crown"></i> GoT фанат</span>
+                            <span class="detail"><i class="fas fa-brain"></i> Психология</span>
+                        </div>
                     </div>
-                    <h3>Сериалы</h3>
-                    <p>Игра Престолов — лучший сериал! Пересматриваю постоянно. Также нравится Ганнибал — умный и атмосферный.</p>
                 </div>
                 
-                <div class="about-card">
-                    <div class="card-icon">
-                        <i class="fas fa-plane"></i>
+                <div class="hobby-card hobby-travel">
+                    <div class="hobby-overlay"></div>
+                    <div class="hobby-content">
+                        <div class="hobby-icon">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <h3>Путешественница</h3>
+                        <p>Люблю исследовать новые места с семьёй. Мечтаю посмотреть Италию, Японию, Исландию и Грецию.</p>
+                        <div class="hobby-details">
+                            <span class="detail"><i class="fas fa-map"></i> Планы: 4 страны</span>
+                            <span class="detail"><i class="fas fa-camera"></i> Фотографии</span>
+                        </div>
                     </div>
-                    <h3>Путешествия</h3>
-                    <p>Люблю путешествовать с семьёй. Мечтаю посмотреть Италию, Японию, Исландию и Грецию.</p>
                 </div>
             </div>
         </div>
@@ -148,6 +198,7 @@
                     </div>
                     <h3>Мама</h3>
                     <p>Всегда поддерживает и помогает</p>
+                    <div class="member-role">Опорa</div>
                 </div>
                 
                 <div class="family-member">
@@ -156,6 +207,7 @@
                     </div>
                     <h3>Папа</h3>
                     <p>Мудрый советчик и защитник</p>
+                    <div class="member-role">Защита</div>
                 </div>
                 
                 <div class="family-member">
@@ -164,6 +216,7 @@
                     </div>
                     <h3>Братик</h3>
                     <p>Весёлый и активный</p>
+                    <div class="member-role">Энергия</div>
                 </div>
                 
                 <div class="family-member">
@@ -172,6 +225,7 @@
                     </div>
                     <h3>Сестрёнка</h3>
                     <p>Моя маленькая подруга</p>
+                    <div class="member-role">Дружба</div>
                 </div>
                 
                 <div class="family-member">
@@ -180,6 +234,7 @@
                     </div>
                     <h3>Чучя</h3>
                     <p>Пушистая кошечка</p>
+                    <div class="member-role">Уют</div>
                 </div>
                 
                 <div class="family-member">
@@ -188,6 +243,7 @@
                     </div>
                     <h3>Бетти</h3>
                     <p>Верная собачка</p>
+                    <div class="member-role">Верность</div>
                 </div>
             </div>
         </div>
@@ -209,8 +265,12 @@
                     <div class="subject-info">
                         <h3>Биология</h3>
                         <p><strong>Профильный предмет</strong>. Изучаю строение организмов, генетику, экологию. Мечтаю связать с этим профессию.</p>
-                        <div class="progress">
-                            <div class="progress-fill" style="width: 90%"></div>
+                        <div class="progress-container">
+                            <div class="progress-label">Уровень знаний</div>
+                            <div class="progress">
+                                <div class="progress-fill" style="width: 90%"></div>
+                            </div>
+                            <div class="progress-percent">90%</div>
                         </div>
                     </div>
                 </div>
@@ -222,8 +282,12 @@
                     <div class="subject-info">
                         <h3>Химия</h3>
                         <p><strong>Любимый предмет</strong>. Реакции, формулы, лабораторные работы — это захватывает! Химия вокруг нас.</p>
-                        <div class="progress">
-                            <div class="progress-fill" style="width: 85%"></div>
+                        <div class="progress-container">
+                            <div class="progress-label">Уровень знаний</div>
+                            <div class="progress">
+                                <div class="progress-fill" style="width: 85%"></div>
+                            </div>
+                            <div class="progress-percent">85%</div>
                         </div>
                     </div>
                 </div>
@@ -231,6 +295,24 @@
                 <div class="goal-card">
                     <h3><i class="fas fa-bullseye"></i> Цель на ЕГЭ</h3>
                     <p>Хочу набрать высокие баллы по биологии, химии и русскому языку, чтобы поступить в медицинский университет в Уфе. Мечтаю стать врачом и помогать людям.</p>
+                    <div class="goal-timeline">
+                        <div class="timeline-step active">
+                            <div class="step-number">1</div>
+                            <div class="step-text">Подготовка</div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="step-number">2</div>
+                            <div class="step-text">ЕГЭ</div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="step-number">3</div>
+                            <div class="step-text">Поступление</div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="step-number">4</div>
+                            <div class="step-text">Врач</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -253,7 +335,7 @@
                         </div>
                         <div class="wildrift-title">
                             <h3>Wild Rift</h3>
-                            <p>5 лет опыта • 2000+ часов</p>
+                            <p>5 лет опыта • Мейнер Нами</p>
                         </div>
                     </div>
                     
@@ -274,16 +356,16 @@
                                 <div class="wr-stat-label">сыгранных матчей</div>
                             </div>
                             <div class="wr-stat">
+                                <div class="wr-stat-number">2000+</div>
+                                <div class="wr-stat-label">часов в игре</div>
+                            </div>
+                            <div class="wr-stat">
                                 <div class="wr-stat-number">Претендент</div>
                                 <div class="wr-stat-label">текущий ранг</div>
                             </div>
                             <div class="wr-stat">
-                                <div class="wr-stat-number">1-е</div>
-                                <div class="wr-stat-label">место в турнире</div>
-                            </div>
-                            <div class="wr-stat">
-                                <div class="wr-stat-number">100€</div>
-                                <div class="wr-stat-label">денежный приз</div>
+                                <div class="wr-stat-number">1-е место</div>
+                                <div class="wr-stat-label">в турнире</div>
                             </div>
                         </div>
                         
@@ -298,24 +380,49 @@
                     <h3>Другие любимые игры:</h3>
                     <div class="games-list">
                         <div class="game-item">
-                            <i class="fas fa-crosshairs"></i>
-                            <span>CS:GO 2</span>
+                            <div class="game-icon">
+                                <i class="fas fa-crosshairs"></i>
+                            </div>
+                            <div class="game-info">
+                                <h4>CS:GO 2</h4>
+                                <p>Тактический шутер</p>
+                            </div>
                         </div>
                         <div class="game-item">
-                            <i class="fas fa-robot"></i>
-                            <span>Detroit: Become Human</span>
+                            <div class="game-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="game-info">
+                                <h4>Detroit: Become Human</h4>
+                                <p>Сюжетная драма</p>
+                            </div>
                         </div>
                         <div class="game-item">
-                            <i class="fas fa-gun"></i>
-                            <span>Borderlands 3</span>
+                            <div class="game-icon">
+                                <i class="fas fa-gun"></i>
+                            </div>
+                            <div class="game-info">
+                                <h4>Borderlands 3</h4>
+                                <p>Экшен-RPG</p>
+                            </div>
                         </div>
                         <div class="game-item">
-                            <i class="fas fa-star"></i>
-                            <span>Honkai Star Rail</span>
+                            <div class="game-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="game-info">
+                                <h4>Honkai Star Rail</h4>
+                                <p>Космическая RPG</p>
+                            </div>
                         </div>
                         <div class="game-item">
-                            <i class="fas fa-user-secret"></i>
-                            <span>R.E.P.O.</span>
+                            <div class="game-icon">
+                                <i class="fas fa-user-secret"></i>
+                            </div>
+                            <div class="game-info">
+                                <h4>R.E.P.O.</h4>
+                                <p>Инди-хоррор</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -383,16 +490,16 @@
                 
                 <div class="footer-stats">
                     <div class="footer-stat">
-                        <i class="fas fa-gamepad"></i>
-                        <span>2222+ игр в Wild Rift</span>
+                        <i class="fas fa-user-md"></i>
+                        <span>Будущий врач</span>
                     </div>
                     <div class="footer-stat">
-                        <i class="fas fa-clock"></i>
-                        <span>2000+ часов в играх</span>
+                        <i class="fas fa-water"></i>
+                        <span>Мейнер Нами</span>
                     </div>
                     <div class="footer-stat">
                         <i class="fas fa-trophy"></i>
-                        <span>1 место в турнире</span>
+                        <span>Победитель турнира</span>
                     </div>
                 </div>
                 
@@ -411,6 +518,6 @@
     </footer>
 
     <!-- JS с версией для сброса кэша -->
-    <script src="script.js?v=2.0"></script>
+    <script src="script.js?v=3.0"></script>
 </body>
 </html>
