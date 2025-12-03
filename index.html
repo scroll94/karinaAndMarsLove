@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моя Биография | [Имя]</title>
+    
+    <!-- Шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&family=Dancing+Script:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Иконки -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Стили -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐱</text></svg>">
+</head>
+<body>
+    <!-- Анимированные котики на фоне -->
+    <div class="floating-cats">
+        <div class="cat">🐱</div>
+        <div class="cat">😺</div>
+        <div class="cat">😸</div>
+        <div class="cat">😻</div>
+        <div class="cat">🐈</div>
+    </div>
+    
+    <!-- Главный контейнер с 3 страницами -->
+    <div class="container">
+        <!-- Страница 1: Главная -->
+        <section class="page active" id="page1">
+            <div class="page-content">
+                <!-- Аватар с анимацией -->
+                <div class="avatar-container">
+                    <div class="avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="avatar-ring"></div>
+                    <div class="avatar-ring ring-2"></div>
+                </div>
+                
+                <h1 class="page-title">Привет! Я <span class="highlight">[Имя]</span></h1>
+                <p class="page-subtitle">Выпускница школы | Будущий студент | Любитель котиков</p>
+                
+                <!-- Интерактивные карточки -->
+                <div class="cards-grid">
+                    <div class="card" onclick="switchPage(2)">
+                        <div class="card-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h3>Обо мне</h3>
+                        <p>Узнай кто я и чем живу</p>
+                        <div class="card-cat">😺</div>
+                    </div>
+                    
+                    <div class="card" onclick="switchPage(3)">
+                        <div class="card-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Учёба</h3>
+                        <p>Моя подготовка к ЕГЭ</p>
+                        <div class="card-cat">📚</div>
+                    </div>
+                    
+                    <div class="card" id="secretCard">
+                        <div class="card-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Секрет</h3>
+                        <p>Нажми, чтобы узнать</p>
+                        <div class="card-cat">🎁</div>
+                    </div>
+                </div>
+                
+                <!-- Котик с секретом -->
+                <div class="secret-cat" onclick="showSecret()">
+                    <div class="cat-body">🐱</div>
+                    <div class="cat-thought">Нажми на меня!</div>
+                </div>
+                
+                <!-- Навигация -->
+                <div class="page-nav">
+                    <button class="nav-btn active" onclick="switchPage(1)">1</button>
+                    <button class="nav-btn" onclick="switchPage(2)">2</button>
+                    <button class="nav-btn" onclick="switchPage(3)">3</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Страница 2: Обо мне -->
+        <section class="page" id="page2">
+            <div class="page-content">
+                <button class="back-btn" onclick="switchPage(1)">
+                    <i class="fas fa-arrow-left"></i> Назад
+                </button>
+                
+                <h2 class="page-title"><i class="fas fa-user"></i> Обо <span class="highlight">мне</span></h2>
+                
+                <!-- Выдвигающаяся панель с информацией -->
+                <div class="info-panel">
+                    <div class="panel-header" onclick="togglePanel('personalInfo')">
+                        <h3><i class="fas fa-user-circle"></i> Личная информация</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="panel-content" id="personalInfo">
+                        <div class="info-item">
+                            <i class="fas fa-birthday-cake"></i>
+                            <span>Дата рождения:</span>
+                            <strong>[ДД.ММ.ГГГГ]</strong>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Город:</span>
+                            <strong>[Город]</strong>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-school"></i>
+                            <span>Школа:</span>
+                            <strong>[Номер школы]</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Интерактивный слайдер с увлечениями -->
+                <div class="hobbies-slider">
+                    <h3><i class="fas fa-heart"></i> Мои увлечения</h3>
+                    <div class="slider-track">
+                        <div class="hobby active" onclick="showHobbyDetail(0)">
+                            <i class="fas fa-book-reader"></i>
+                            <span>Чтение</span>
+                        </div>
+                        <div class="hobby" onclick="showHobbyDetail(1)">
+                            <i class="fas fa-music"></i>
+                            <span>Музыка</span>
+                        </div>
+                        <div class="hobby" onclick="showHobbyDetail(2)">
+                            <i class="fas fa-camera"></i>
+                            <span>Фотография</span>
+                        </div>
+                        <div class="hobby" onclick="showHobbyDetail(3)">
+                            <i class="fas fa-utensils"></i>
+                            <span>Кулинария</span>
+                        </div>
+                    </div>
+                    <div class="hobby-detail" id="hobbyDetail">
+                        Нажми на увлечение, чтобы узнать больше!
+                    </div>
+                </div>
+                
+                <!-- Котик с запиской -->
+                <div class="note-cat" onclick="showCatNote()">
+                    <div class="cat-note">🐱</div>
+                    <div class="note-bubble">Нажми для записки!</div>
+                </div>
+                
+                <!-- Места для фото -->
+                <div class="photo-grid">
+                    <div class="photo-slot" onclick="addPhotoPrompt(1)">
+                        <i class="fas fa-plus"></i>
+                        <span>Добавить фото 1</span>
+                    </div>
+                    <div class="photo-slot" onclick="addPhotoPrompt(2)">
+                        <i class="fas fa-plus"></i>
+                        <span>Добавить фото 2</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Страница 3: Учёба -->
+        <section class="page" id="page3">
+            <div class="page-content">
+                <button class="back-btn" onclick="switchPage(1)">
+                    <i class="fas fa-arrow-left"></i> Назад
+                </button>
+                
+                <h2 class="page-title"><i class="fas fa-graduation-cap"></i> Моя <span class="highlight">учёба</span></h2>
+                
+                <!-- Прогресс бар с анимацией -->
+                <div class="progress-section">
+                    <h3><i class="fas fa-chart-line"></i> Прогресс подготовки к ЕГЭ</h3>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="egeProgress"></div>
+                        </div>
+                        <span class="progress-text">75% готово</span>
+                    </div>
+                    <button class="progress-btn" onclick="increaseProgress()">
+                        <i class="fas fa-plus"></i> Увеличить прогресс
+                    </button>
+                </div>
+                
+                <!-- Расписание дня -->
+                <div class="schedule">
+                    <h3><i class="fas fa-calendar-alt"></i> Мой распорядок дня</h3>
+                    <div class="timeline">
+                        <div class="time-item" onclick="toggleTimeDetail(0)">
+                            <div class="time-dot"></div>
+                            <div class="time-content">
+                                <span class="time">08:00 - 14:00</span>
+                                <span class="activity">Школа</span>
+                            </div>
+                        </div>
+                        <div class="time-item" onclick="toggleTimeDetail(1)">
+                            <div class="time-dot"></div>
+                            <div class="time-content">
+                                <span class="time">15:00 - 18:00</span>
+                                <span class="activity">Подготовка к ЕГЭ</span>
+                            </div>
+                        </div>
+                        <div class="time-item" onclick="toggleTimeDetail(2)">
+                            <div class="time-dot"></div>
+                            <div class="time-content">
+                                <span class="time">19:00 - 21:00</span>
+                                <span class="activity">Отдых и хобби</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Интерактивная доска с целями -->
+                <div class="goals-board">
+                    <h3><i class="fas fa-bullseye"></i> Мои цели</h3>
+                    <div class="goals-list">
+                        <div class="goal-item" onclick="toggleGoal(this)">
+                            <i class="far fa-circle"></i>
+                            <span>Сдать ЕГЭ на 80+ баллов</span>
+                        </div>
+                        <div class="goal-item" onclick="toggleGoal(this)">
+                            <i class="far fa-circle"></i>
+                            <span>Поступить в [Название вуза]</span>
+                        </div>
+                        <div class="goal-item" onclick="toggleGoal(this)">
+                            <i class="far fa-circle"></i>
+                            <span>Выучить английский на B2</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Котик-помощник -->
+                <div class="helper-cat" onclick="catHelp()">
+                    <div class="cat-helper">😸</div>
+                    <div class="helper-text">Нужна помощь с учёбой?</div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Попап с секретом -->
+    <div class="secret-popup" id="secretPopup">
+        <div class="popup-content">
+            <button class="close-popup" onclick="closePopup()">×</button>
+            <div class="popup-cat">😻</div>
+            <h3>Секретная записка!</h3>
+            <p>Каждый день я становлюсь лучше! 💪</p>
+            <p>Секрет моего успеха: усердие + вера в себя!</p>
+            <div class="popup-signature">— [Имя]</div>
+        </div>
+    </div>
+    
+    <!-- Записка от котика -->
+    <div class="cat-note-popup" id="catNotePopup">
+        <div class="note-content">
+            <button class="close-note" onclick="closeCatNote()">×</button>
+            <div class="note-cat-icon">🐱</div>
+            <h3>Мяу! Записка от котика:</h3>
+            <p>"Ты умница! Помни, что отдых так же важен, как и учёба. 
+            Не забывай делать перерывы и баловать себя чем-нибудь вкусненьким!"</p>
+            <div class="note-paw">🐾</div>
+        </div>
+    </div>
+    
+    <!-- Помощь от котика -->
+    <div class="help-popup" id="helpPopup">
+        <div class="help-content">
+            <button class="close-help" onclick="closeHelp()">×</button>
+            <div class="help-cat">😸</div>
+            <h3>Совет от котика-умника:</h3>
+            <ul>
+                <li>🍃 Делай перерыв каждые 45 минут</li>
+                <li>📚 Начинай с самых сложных предметов</li>
+                <li>💧 Пей больше воды во время учёбы</li>
+                <li>🎵 Слушай фоновую музыку без слов</li>
+                <li>✨ Верь в себя - ты справишься!</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
