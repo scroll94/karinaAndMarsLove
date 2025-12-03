@@ -3,18 +3,34 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 Сайт Карины Бахтигареевой загружен!');
     
     // Проверка загрузки CSS
-    if (!document.styleSheets[0].cssRules) {
-        console.warn('⚠️ CSS может быть не загружен. Проверьте подключение.');
-        document.body.classList.add('no-css');
-    }
+    checkCSSLoaded();
     
-    // Инициализация
+    // Инициализация всех функций
     initNavigation();
-    initAnimations();
     initMobileMenu();
+    initAnimations();
     initProgressBars();
-    initScrollAnimations();
+    initHoverEffects();
+    initScrollEffects();
+    
+    // Консольное приветствие
+    showConsoleWelcome();
 });
+
+// Проверка загрузки CSS
+function checkCSSLoaded() {
+    setTimeout(() => {
+        const bodyStyles = window.getComputedStyle(document.body);
+        const bgColor = bodyStyles.backgroundColor;
+        
+        if (bgColor === 'rgba(0, 0, 0, 0)' || bgColor === 'rgb(255, 255, 255)') {
+            console.warn('⚠️ CSS может быть не загружен. Проверьте подключение в GitHub Pages.');
+            // Добавляем резервные стили
+            document.body.style.backgroundColor = '#0f172a';
+            document.body.style.color = '#f8fafc';
+        }
+    }, 100);
+}
 
 // Навигация
 function initNavigation() {
@@ -47,11 +63,14 @@ function initNavigation() {
                     menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
                 }
                 
-                // Плавный скролл с offset для фиксированной навигации
+                // Плавный скролл
                 window.scrollTo({
                     top: targetSection.offsetTop - 80,
                     behavior: 'smooth'
                 });
+                
+                // Обновляем активную ссылку
+                updateActiveLink(targetId);
             }
         });
     });
@@ -59,46 +78,33 @@ function initNavigation() {
     // Активная ссылка при скролле
     window.addEventListener('scroll', function() {
         const sections = document.querySelectorAll('.section');
-        let current = '';
         const scrollPos = window.scrollY + 100;
+        let currentSection = '';
         
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
             
             if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-                current = section.getAttribute('id');
+                currentSection = section.getAttribute('id');
             }
         });
         
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
-        });
+        if (currentSection) {
+            updateActiveLink('#' + currentSection);
+        }
     });
 }
 
-// Анимации
-function initAnimations() {
-    // Ждем загрузки страницы для анимаций
-    setTimeout(() => {
-        const cards = document.querySelectorAll('.about-card, .family-member, .subject-card, .wildrift-card, .timeline-item, .goal-card, .other-games');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        cards.forEach(card => {
-            observer.observe(card);
-        });
-    }, 500);
+// Обновление активной ссылки
+function updateActiveLink(targetId) {
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === targetId) {
+            link.classList.add('active');
+        }
+    });
 }
 
 // Мобильное меню
@@ -106,7 +112,7 @@ function initMobileMenu() {
     const navLinksContainer = document.querySelector('.nav-links');
     const menuToggle = document.querySelector('.menu-toggle');
     
-    // Автоматическое закрытие меню при клике на ссылку
+    // Закрытие меню при клике на ссылку
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => {
             if (window.innerWidth <= 992 && navLinksContainer) {
@@ -128,7 +134,7 @@ function initMobileMenu() {
         }
     });
     
-    // Адаптация меню при ресайзе
+    // Адаптация при ресайзе
     window.addEventListener('resize', () => {
         if (window.innerWidth > 992 && navLinksContainer) {
             navLinksContainer.classList.remove('active');
@@ -139,11 +145,33 @@ function initMobileMenu() {
     });
 }
 
-// Прогресс-бары
-function initProgressBars() {
-    const progressBars = document.querySelectorAll('.progress-fill');
+// Анимации
+function initAnimations() {
+    // Анимация появления элементов
+    const animatedElements = document.querySelectorAll(
+        '.hobby-card, .family-member, .subject-card, .wildrift-card, .timeline-item, .goal-card, .game-item'
+    );
     
     const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { 
+        threshold: 0.1,
+        rootMargin: '50px'
+    });
+    
+    animatedElements.forEach(el => {
+        observer.observe(el);
+    });
+    
+    // Анимация для прогресс-баров
+    const progressBars = document.querySelectorAll('.progress-fill');
+    const progressObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const width = entry.target.style.width;
@@ -151,96 +179,197 @@ function initProgressBars() {
                 setTimeout(() => {
                     entry.target.style.width = width;
                 }, 300);
+                progressObserver.unobserve(entry.target);
             }
         });
     }, { threshold: 0.5 });
     
     progressBars.forEach(bar => {
-        observer.observe(bar);
+        progressObserver.observe(bar);
     });
 }
 
-// Анимации при скролле
-function initScrollAnimations() {
-    // Параллакс эффект для hero
+// Эффекты при наведении
+function initHoverEffects() {
+    // Эффект для карточек хобби
+    const hobbyCards = document.querySelectorAll('.hobby-card');
+    hobbyCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.zIndex = '10';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            setTimeout(() => {
+                card.style.zIndex = '1';
+            }, 300);
+        });
+    });
+    
+    // Эффект для статистики
+    const stats = document.querySelectorAll('.stat, .wr-stat, .footer-stat');
+    stats.forEach(stat => {
+        stat.addEventListener('mouseenter', () => {
+            stat.style.transform = stat.style.transform + ' scale(1.05)';
+        });
+        
+        stat.addEventListener('mouseleave', () => {
+            stat.style.transform = stat.style.transform.replace(' scale(1.05)', '');
+        });
+    });
+}
+
+// Эффекты скролла
+function initScrollEffects() {
+    // Параллакс эффект
+    let lastScroll = 0;
+    
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
-        const parallaxElements = document.querySelectorAll('.hero-section, .image-frame');
+        const heroSection = document.querySelector('.hero-section');
         
-        parallaxElements.forEach((el, index) => {
-            const speed = index === 0 ? 0.5 : 0.3;
-            el.style.transform = `translateY(${scrolled * speed}px)`;
-        });
-    });
-    
-    // Появление элементов при скролле
-    const scrollElements = document.querySelectorAll('.about-card, .family-member, .subject-card, .game-item');
-    
-    const elementInView = (el, dividend = 1) => {
-        const elementTop = el.getBoundingClientRect().top;
-        return (
-            elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
-        );
-    };
-    
-    const displayScrollElement = (element) => {
-        element.classList.add('scrolled');
-    };
-    
-    const handleScrollAnimation = () => {
-        scrollElements.forEach((el) => {
-            if (elementInView(el, 1.25)) {
-                displayScrollElement(el);
+        if (heroSection) {
+            const speed = 0.5;
+            heroSection.style.transform = `translateY(${scrolled * speed}px)`;
+        }
+        
+        // Анимация навигации при скролле
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            if (scrolled > 100) {
+                navbar.style.background = 'rgba(15, 23, 42, 0.98)';
+                navbar.style.backdropFilter = 'blur(15px)';
+                navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.5)';
+            } else {
+                navbar.style.background = 'rgba(15, 23, 42, 0.95)';
+                navbar.style.backdropFilter = 'blur(10px)';
+                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
             }
-        });
-    };
-    
-    window.addEventListener('scroll', () => {
-        handleScrollAnimation();
-    });
-    
-    // Инициализация при загрузке
-    handleScrollAnimation();
-}
-
-// Плавная загрузка страницы
-window.addEventListener('load', function() {
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.7s ease';
-    
-    setTimeout(() => {
-        document.body.style.opacity = '1';
+        }
         
-        // Показать консольное сообщение
-        console.log('%c✨ Сайт полностью загружен! ✨', 'color: #8b5cf6; font-size: 16px; font-weight: bold;');
-        console.log('%cКарина Бахтигареева • Будущий врач • Мейнер Нами', 'color: #00d4ff; font-size: 14px;');
-    }, 100);
-    
-    // Статистика в консоли
-    console.table({
-        'Игр в Wild Rift': '2222+',
-        'Часов в играх': '2000+',
-        'Место в турнире': '1-е',
-        'Мечта': 'Стать врачом'
-    });
-});
-
-// Фикс для старых браузеров
-if (!window.IntersectionObserver) {
-    console.log('IntersectionObserver не поддерживается, используем fallback');
-    
-    // Простой fallback для анимаций
-    window.addEventListener('scroll', function() {
-        const elements = document.querySelectorAll('.about-card, .family-member, .subject-card');
+        // Анимация появления элементов
+        const elements = document.querySelectorAll('.hobby-card, .family-member');
         const windowHeight = window.innerHeight;
         
         elements.forEach(el => {
             const position = el.getBoundingClientRect().top;
             
             if (position < windowHeight - 100) {
-                el.style.opacity = '1';
-                el.style.transform = 'translateY(0)';
+                el.classList.add('visible');
             }
         });
+        
+        lastScroll = scrolled;
     });
 }
+
+// Прогресс-бары
+function initProgressBars() {
+    const progressBars = document.querySelectorAll('.progress-fill');
+    
+    progressBars.forEach(bar => {
+        const width = bar.style.width;
+        bar.style.width = '0%';
+        
+        setTimeout(() => {
+            bar.style.transition = 'width 1.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            bar.style.width = width;
+        }, 500);
+    });
+}
+
+// Консольное приветствие
+function showConsoleWelcome() {
+    const styles = [
+        'color: #8b5cf6',
+        'font-size: 16px',
+        'font-weight: bold',
+        'text-shadow: 0 0 5px rgba(139, 92, 246, 0.5)',
+        'padding: 10px 0'
+    ].join(';');
+    
+    const subStyles = [
+        'color: #00d4ff',
+        'font-size: 14px',
+        'font-weight: normal'
+    ].join(';');
+    
+    console.log('%c✨ Сайт Карины Бахтигареевой ✨', styles);
+    console.log('%cБудущий врач • Мейнер Нами • Победитель турниров', subStyles);
+    
+    console.table({
+        'Статус': 'Ученица 11 класса',
+        'Цель': 'Медицинский университет',
+        'Игра': 'Wild Rift (Нами)',
+        'Достижение': '1 место в турнире',
+        'Любимое лакомство': 'Raffaello'
+    });
+}
+
+// Плавная загрузка страницы
+window.addEventListener('load', function() {
+    // Плавное появление
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.7s ease';
+    
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+        
+        // Запускаем анимации после загрузки
+        setTimeout(() => {
+            const elements = document.querySelectorAll('.hobby-card, .family-member');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        }, 300);
+    }, 100);
+    
+    // Проверка поддержки IntersectionObserver
+    if (!('IntersectionObserver' in window)) {
+        console.log('Браузер не поддерживает IntersectionObserver, используем fallback');
+        // Простой fallback для старых браузеров
+        window.addEventListener('scroll', function() {
+            const elements = document.querySelectorAll('.hobby-card, .family-member');
+            const windowHeight = window.innerHeight;
+            
+            elements.forEach(el => {
+                const position = el.getBoundingClientRect().top;
+                
+                if (position < windowHeight - 50) {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }
+            });
+        });
+        
+        // Запускаем сразу для видимых элементов
+        setTimeout(() => {
+            const elements = document.querySelectorAll('.hobby-card, .family-member');
+            const windowHeight = window.innerHeight;
+            
+            elements.forEach(el => {
+                const position = el.getBoundingClientRect().top;
+                
+                if (position < windowHeight) {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }
+            });
+        }, 500);
+    }
+});
+
+// Обработка ошибок загрузки ресурсов
+window.addEventListener('error', function(e) {
+    if (e.target.tagName === 'LINK' && e.target.rel === 'stylesheet') {
+        console.error('❌ Ошибка загрузки CSS:', e.target.href);
+        // Активируем резервные стили
+        document.body.classList.add('css-failed');
+    }
+    
+    if (e.target.tagName === 'SCRIPT') {
+        console.error('❌ Ошибка загрузки JS:', e.target.src);
+    }
+}, true);
