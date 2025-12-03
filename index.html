@@ -4,7 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Карина Бахтигареева</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- АВАРИЙНЫЙ CSS если основной не загрузится -->
+    <style>
+        /* БАЗОВЫЕ СТИЛИ ГАРАНТИРОВАННО */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #0f172a; 
+            color: #f8fafc; 
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        .section { padding: 80px 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .highlight { color: #8b5cf6; }
+        /* Сброс если CSS не загрузился */
+        .no-css body { background: linear-gradient(135deg, #0f172a, #1e1b4b); }
+    </style>
+    <!-- Основной CSS с версией -->
+    <link rel="stylesheet" href="style.css?v=2.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,7 +34,7 @@
     <nav class="navbar">
         <div class="logo">Карина Б.</div>
         <div class="nav-links">
-            <a href="#hero" class="nav-link">Главная</a>
+            <a href="#hero" class="nav-link active">Главная</a>
             <a href="#about" class="nav-link">Обо мне</a>
             <a href="#family" class="nav-link">Семья</a>
             <a href="#study" class="nav-link">Учёба</a>
@@ -391,6 +410,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- JS с версией для сброса кэша -->
+    <script src="script.js?v=2.0"></script>
 </body>
 </html>
