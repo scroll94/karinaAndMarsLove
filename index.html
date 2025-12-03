@@ -9,229 +9,141 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 <body>
-    <!-- 3D Фоновые элементы -->
-    <div class="bg-elements">
-        <div class="bg-element element-1"></div>
-        <div class="bg-element element-2"></div>
-        <div class="bg-element element-3"></div>
-        <div class="bg-element element-4"></div>
-        <div class="bg-element element-5"></div>
-    </div>
-
-    <!-- Индикатор прогресса -->
+    <!-- Прогресс-бар -->
     <div class="progress-container">
         <div class="progress-bar" id="progressBar"></div>
     </div>
 
-    <!-- Навигация с 3D эффектом -->
+    <!-- Навигация -->
     <nav class="navbar">
         <div class="logo">
             <span class="logo-text">Карина Б.</span>
             <span class="logo-sub">будущий врач</span>
         </div>
         <div class="nav-links">
-            <a href="#about" class="nav-link active">
-                <i class="fas fa-home"></i>
-                <span>Обо мне</span>
-            </a>
-            <a href="#family" class="nav-link">
-                <i class="fas fa-heart"></i>
-                <span>Семья</span>
-            </a>
-            <a href="#study" class="nav-link">
-                <i class="fas fa-graduation-cap"></i>
-                <span>Учёба</span>
-            </a>
-            <a href="#hobbies" class="nav-link">
-                <i class="fas fa-gamepad"></i>
-                <span>Увлечения</span>
-            </a>
-            <a href="#dreams" class="nav-link">
-                <i class="fas fa-star"></i>
-                <span>Мечты</span>
-            </a>
+            <a href="#hero" class="nav-link active">Главная</a>
+            <a href="#about" class="nav-link">Обо мне</a>
+            <a href="#family" class="nav-link">Семья</a>
+            <a href="#study" class="nav-link">Учёба</a>
+            <a href="#games" class="nav-link">Игры</a>
+            <a href="#dreams" class="nav-link">Мечты</a>
         </div>
         <div class="menu-toggle">
             <i class="fas fa-bars"></i>
         </div>
     </nav>
 
-    <!-- Герой-секция с фото -->
+    <!-- Герой -->
     <section id="hero" class="section hero-section">
-        <div class="hero-overlay"></div>
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text animate-on-scroll" data-animation="fadeInUp">
+                <div class="hero-text">
                     <h1 class="hero-title">
-                        <span class="title-line">Карина</span>
-                        <span class="title-line highlight">Бахтигареева</span>
+                        <span>Карина</span>
+                        <span class="highlight">Бахтигареева</span>
                     </h1>
                     <p class="hero-subtitle">17 лет • Будущий врач • Геймер • Любитель сладкого</p>
-                    <p class="hero-desc">Живу в Уфе, мечтаю стать врачом и помогать людям. Учусь в 11 классе, обожаю семью, компьютерные игры и сериал "Игра Престолов".</p>
+                    <p class="hero-desc">Учусь в 11 классе в Уфе, мечтаю стать врачом. Люблю семью, компьютерные игры и сериал "Игра Престолов".</p>
                     
                     <div class="hero-badges">
                         <div class="badge">
-                            <i class="fas fa-flask"></i>
+                            <i class="fas fa-dna"></i>
                             <span>Биология</span>
                         </div>
                         <div class="badge">
-                            <i class="fas fa-atom"></i>
+                            <i class="fas fa-flask"></i>
                             <span>Химия</span>
                         </div>
                         <div class="badge">
                             <i class="fas fa-gamepad"></i>
-                            <span>Gamer</span>
+                            <span>Геймер</span>
                         </div>
                         <div class="badge">
                             <i class="fas fa-crown"></i>
-                            <span>GoT Fan</span>
+                            <span>Игра Престолов</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="hero-image animate-on-scroll" data-animation="fadeInRight">
+                <div class="hero-image">
                     <div class="image-frame">
-                        <div class="image-container">
-                            <img src="https://www.facebook.com/share/p/1H3mcLpSt5/" alt="Карина Бахтигареева" class="main-photo">
-                            <div class="image-glow"></div>
-                        </div>
-                        <div class="image-caption">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Уфа, Россия</span>
+                        <div class="image-placeholder">
+                            <i class="fas fa-user-md"></i>
+                            <p>Карина Бахтигареева</p>
+                            <small>Будущий врач из Уфы</small>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="scroll-indicator">
-                <div class="mouse">
-                    <div class="wheel"></div>
-                </div>
-                <p>Листайте, чтобы узнать больше</p>
-            </div>
         </div>
     </section>
 
-    <!-- Секция "Обо мне" -->
+    <!-- Обо мне -->
     <section id="about" class="section">
-        <div class="section-overlay"></div>
         <div class="container">
-            <div class="section-header animate-on-scroll" data-animation="fadeInUp">
-                <h2 class="section-title">
-                    <span class="title-decor">//</span>
-                    Немного <span class="highlight">о себе</span>
-                    <span class="title-decor">//</span>
-                </h2>
-                <p class="section-subtitle">Кто я, что люблю и к чему стремлюсь</p>
-            </div>
+            <h2 class="section-title">Обо <span class="highlight">мне</span></h2>
             
             <div class="about-grid">
-                <div class="about-card animate-on-scroll" data-animation="fadeInLeft" data-delay="0.1">
-                    <div class="card-icon pulse">
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Семья</h3>
+                    <p>Мама, папа, братик, сестренка, кошка Чучя и собачка Бетти — моя самая большая поддержка.</p>
+                </div>
+                
+                <div class="about-card">
+                    <div class="card-icon">
                         <i class="fas fa-cookie-bite"></i>
                     </div>
                     <h3>Сладости</h3>
-                    <p>Обожаю сладкое! Мои фавориты:</p>
-                    <ul class="styled-list">
-                        <li><i class="fas fa-candy-cane"></i> Milka шоколад</li>
-                        <li><i class="fas fa-egg"></i> Kinder шоколад</li>
-                        <li><i class="fas fa-star"></i> Raffaello</li>
-                        <li><i class="fas fa-cake"></i> Торт "Пчёлка"</li>
-                    </ul>
+                    <p>Обожаю Milka, Kinder, Raffaello и торт "Пчёлка". Сладкое — моя слабость!</p>
                 </div>
                 
-                <div class="about-card animate-on-scroll" data-animation="fadeInLeft" data-delay="0.2">
-                    <div class="card-icon pulse">
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Учёба</h3>
+                    <p>11 класс, профильные предметы — биология и химия. Готовлюсь к ЕГЭ.</p>
+                </div>
+                
+                <div class="about-card">
+                    <div class="card-icon">
                         <i class="fas fa-gamepad"></i>
                     </div>
                     <h3>Игры</h3>
-                    <p>Провожу время за играми:</p>
-                    <div class="games-grid">
-                        <div class="game-tag">CS:GO 2</div>
-                        <div class="game-tag">Detroit</div>
-                        <div class="game-tag">Borderlands 3</div>
-                        <div class="game-tag">Honkai Star Rail</div>
-                        <div class="game-tag">R.E.P.O.</div>
-                        <div class="game-tag">Мультиплеер</div>
-                    </div>
-                    <p class="small-text">Хочу научиться играть в CS:GO 2 на профессиональном уровне!</p>
-                </div>
-                
-                <div class="about-card animate-on-scroll" data-animation="fadeInLeft" data-delay="0.3">
-                    <div class="card-icon pulse">
-                        <i class="fas fa-film"></i>
-                    </div>
-                    <h3>Сериалы</h3>
-                    <p>Любимые сериалы:</p>
-                    <div class="series-card">
-                        <div class="series-header">
-                            <i class="fas fa-crown"></i>
-                            <h4>Игра Престолов</h4>
-                        </div>
-                        <p>Лучший сериал всех времён! Пересматриваю постоянно.</p>
-                        <div class="series-header">
-                            <i class="fas fa-user-md"></i>
-                            <h4>Ганнибал</h4>
-                        </div>
-                        <p>Психологический триллер с блестящей актёрской игрой.</p>
-                    </div>
-                </div>
-                
-                <div class="about-card animate-on-scroll" data-animation="fadeInLeft" data-delay="0.4">
-                    <div class="card-icon pulse">
-                        <i class="fas fa-plane"></i>
-                    </div>
-                    <h3>Путешествия</h3>
-                    <p>Обожаю путешествовать с семьёй. Новые места, впечатления и воспоминания — что может быть лучше?</p>
-                    <div class="travel-stats">
-                        <div class="stat">
-                            <div class="stat-number">100%</div>
-                            <div class="stat-label">Любовь к приключениям</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">∞</div>
-                            <div class="stat-label">Воспоминаний</div>
-                        </div>
-                    </div>
+                    <p>CS:GO 2, Detroit, Borderlands 3, Honkai Star Rail, R.E.P.O. — мои любимые игры.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Секция "Семья" -->
+    <!-- Семья -->
     <section id="family" class="section family-section">
-        <div class="section-overlay"></div>
         <div class="container">
-            <div class="section-header animate-on-scroll" data-animation="fadeInUp">
-                <h2 class="section-title">
-                    <span class="title-decor">❤</span>
-                    Моя <span class="highlight">семья</span>
-                    <span class="title-decor">❤</span>
-                </h2>
-                <p class="section-subtitle">Самые близкие и любимые люди</p>
-            </div>
+            <h2 class="section-title">Моя <span class="highlight">семья</span></h2>
             
             <div class="family-grid">
-                <div class="family-member animate-on-scroll" data-animation="zoomIn" data-delay="0.1">
+                <div class="family-member">
                     <div class="member-icon">
                         <i class="fas fa-female"></i>
                     </div>
                     <h3>Мама</h3>
-                    <p>Моя поддержка и лучший советчик</p>
+                    <p>Моя поддержка</p>
                 </div>
                 
-                <div class="family-member animate-on-scroll" data-animation="zoomIn" data-delay="0.2">
+                <div class="family-member">
                     <div class="member-icon">
                         <i class="fas fa-male"></i>
                     </div>
                     <h3>Папа</h3>
-                    <p>Защитник и мудрый наставник</p>
+                    <p>Мой защитник</p>
                 </div>
                 
-                <div class="family-member animate-on-scroll" data-animation="zoomIn" data-delay="0.3">
+                <div class="family-member">
                     <div class="member-icon">
                         <i class="fas fa-user"></i>
                     </div>
@@ -239,15 +151,15 @@
                     <p>Весёлый и активный</p>
                 </div>
                 
-                <div class="family-member animate-on-scroll" data-animation="zoomIn" data-delay="0.4">
+                <div class="family-member">
                     <div class="member-icon">
                         <i class="fas fa-user"></i>
                     </div>
                     <h3>Сестрёнка</h3>
-                    <p>Моя маленькая подружка</p>
+                    <p>Моя подружка</p>
                 </div>
                 
-                <div class="family-member animate-on-scroll" data-animation="zoomIn" data-delay="0.5">
+                <div class="family-member">
                     <div class="member-icon">
                         <i class="fas fa-cat"></i>
                     </div>
@@ -255,7 +167,7 @@
                     <p>Пушистая кошечка</p>
                 </div>
                 
-                <div class="family-member animate-on-scroll" data-animation="zoomIn" data-delay="0.6">
+                <div class="family-member">
                     <div class="member-icon">
                         <i class="fas fa-dog"></i>
                     </div>
@@ -263,322 +175,145 @@
                     <p>Верная собачка</p>
                 </div>
             </div>
-            
-            <div class="family-quote animate-on-scroll" data-animation="fadeInUp">
-                <i class="fas fa-quote-left"></i>
-                <p>Семья — это мой фундамент, моя поддержка и самый главный источник счастья. Вместе мы можем всё!</p>
-                <i class="fas fa-quote-right"></i>
-            </div>
         </div>
     </section>
 
-    <!-- Секция "Учёба" -->
-    <section id="study" class="section study-section">
-        <div class="section-overlay"></div>
+    <!-- Учёба -->
+    <section id="study" class="section">
         <div class="container">
-            <div class="section-header animate-on-scroll" data-animation="fadeInUp">
-                <h2 class="section-title">
-                    <span class="title-decor">🎓</span>
-                    Моя <span class="highlight">учёба</span>
-                    <span class="title-decor">🎓</span>
-                </h2>
-                <p class="section-subtitle">11 класс, подготовка к ЕГЭ и планы на будущее</p>
-            </div>
+            <h2 class="section-title">Моя <span class="highlight">учёба</span></h2>
             
             <div class="study-content">
-                <div class="study-left animate-on-scroll" data-animation="fadeInLeft">
-                    <div class="subject-card">
-                        <div class="subject-icon">
-                            <i class="fas fa-dna"></i>
-                        </div>
-                        <div class="subject-info">
-                            <h3>Биология</h3>
-                            <p>Мой любимый предмет! Изучаю строение организмов, генетику, экологию.</p>
-                            <div class="progress-bar-small">
-                                <div class="progress-fill" style="width: 90%"></div>
-                            </div>
-                        </div>
+                <div class="subject-card">
+                    <div class="subject-icon">
+                        <i class="fas fa-dna"></i>
                     </div>
-                    
-                    <div class="subject-card">
-                        <div class="subject-icon">
-                            <i class="fas fa-flask"></i>
-                        </div>
-                        <div class="subject-info">
-                            <h3>Химия</h3>
-                            <p>Профильный предмет. Реакции, формулы, лабораторные — это захватывает!</p>
-                            <div class="progress-bar-small">
-                                <div class="progress-fill" style="width: 85%"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="goal-card">
-                        <h4><i class="fas fa-bullseye"></i> Цель на ЕГЭ</h4>
-                        <div class="goal-stats">
-                            <div class="goal-stat">
-                                <div class="goal-number">100</div>
-                                <div class="goal-label">баллов</div>
-                            </div>
-                            <div class="goal-stat">
-                                <div class="goal-number">3</div>
-                                <div class="goal-label">предмета</div>
-                            </div>
-                            <div class="goal-stat">
-                                <div class="goal-number">1</div>
-                                <div class="goal-label">мечта</div>
-                            </div>
+                    <div class="subject-info">
+                        <h3>Биология</h3>
+                        <p>Мой любимый предмет. Мечтаю связать с ним свою профессию.</p>
+                        <div class="progress">
+                            <div class="progress-bar-small" style="width: 90%"></div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="study-right animate-on-scroll" data-animation="fadeInRight">
-                    <div class="dream-card">
-                        <div class="dream-icon">
-                            <i class="fas fa-user-md"></i>
-                        </div>
-                        <h3>Мечта стать врачом</h3>
-                        <p>Хочу связать жизнь с медициной, помогать людям и спасать жизни. Мечтаю стать высококлассным специалистом в своей области.</p>
-                        
-                        <div class="dream-steps">
-                            <div class="step">
-                                <div class="step-number">1</div>
-                                <div class="step-content">
-                                    <h4>Успешная сдача ЕГЭ</h4>
-                                    <p>Набрать высокие баллы по биологии, химии и русскому языку</p>
-                                </div>
-                            </div>
-                            <div class="step">
-                                <div class="step-number">2</div>
-                                <div class="step-content">
-                                    <h4>Поступление в вуз</h4>
-                                    <p>Поступить в медицинский университет в Уфе</p>
-                                </div>
-                            </div>
-                            <div class="step">
-                                <div class="step-number">3</div>
-                                <div class="step-content">
-                                    <h4>Стать врачом</h4>
-                                    <p>Получить образование и начать помогать людям</p>
-                                </div>
-                            </div>
+                <div class="subject-card">
+                    <div class="subject-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div class="subject-info">
+                        <h3>Химия</h3>
+                        <p>Профильный предмет. Реакции и формулы — это интересно!</p>
+                        <div class="progress">
+                            <div class="progress-bar-small" style="width: 85%"></div>
                         </div>
                     </div>
+                </div>
+                
+                <div class="goal-card">
+                    <h3><i class="fas fa-bullseye"></i> Цель на ЕГЭ</h3>
+                    <p>Хочу набрать 100 баллов по всем предметам, чтобы поступить в медицинский университет в Уфе.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Секция "Увлечения" (игры) -->
-    <section id="hobbies" class="section games-section">
-        <div class="section-overlay"></div>
+    <!-- Игры -->
+    <section id="games" class="section games-section">
         <div class="container">
-            <div class="section-header animate-on-scroll" data-animation="fadeInUp">
-                <h2 class="section-title">
-                    <span class="title-decor">🎮</span>
-                    Игровые <span class="highlight">увлечения</span>
-                    <span class="title-decor">🎮</span>
-                </h2>
-                <p class="section-subtitle">Виртуальные миры, где я отдыхаю и развиваюсь</p>
-            </div>
+            <h2 class="section-title">Игровые <span class="highlight">увлечения</span></h2>
             
-            <div class="games-showcase">
-                <!-- Главная игра - CS:GO 2 -->
-                <div class="main-game-card animate-on-scroll" data-animation="fadeInUp">
-                    <div class="game-bg" style="background: linear-gradient(135deg, rgba(255,100,0,0.2), rgba(0,0,0,0.8));"></div>
-                    <div class="game-content">
-                        <div class="game-header">
-                            <div class="game-icon">
-                                <i class="fas fa-crosshairs"></i>
-                            </div>
-                            <div class="game-title">
-                                <h3>Counter-Strike 2</h3>
-                                <p>Тактический шутер • Multiplayer</p>
-                            </div>
-                        </div>
-                        <div class="game-body">
-                            <p>Моя главная цель — стать сильным игроком в CS:GO 2. Учусь тактике, работе в команде и быстрому принятию решений. Хочу участвовать в турнирах!</p>
-                            
-                            <div class="game-stats">
-                                <div class="game-stat">
-                                    <div class="stat-value">Цель</div>
-                                    <div class="stat-label">Профессионал</div>
-                                </div>
-                                <div class="game-stat">
-                                    <div class="stat-value">Стиль</div>
-                                    <div class="stat-label">Снайпер</div>
-                                </div>
-                                <div class="game-stat">
-                                    <div class="stat-value">Команда</div>
-                                    <div class="stat-label">Ищу тиммейтов</div>
-                                </div>
-                            </div>
-                            
-                            <button class="game-btn pulse-btn">
-                                <i class="fas fa-rocket"></i>
-                                <span>Будущий профессионал</span>
-                            </button>
-                        </div>
+            <div class="games-grid">
+                <div class="game-card main-game">
+                    <div class="game-icon">
+                        <i class="fas fa-crosshairs"></i>
                     </div>
+                    <h3>CS:GO 2</h3>
+                    <p>Хочу научиться играть профессионально. Учу тактике и командной работе.</p>
                 </div>
                 
-                <!-- Другие игры -->
-                <div class="other-games">
-                    <div class="game-card animate-on-scroll" data-animation="flipInX" data-delay="0.1">
-                        <div class="game-card-icon">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <h4>Detroit: Become Human</h4>
-                        <p>Сюжетная игра с моральным выбором</p>
+                <div class="games-list">
+                    <div class="game-item">
+                        <i class="fas fa-robot"></i>
+                        <span>Detroit: Become Human</span>
                     </div>
-                    
-                    <div class="game-card animate-on-scroll" data-animation="flipInX" data-delay="0.2">
-                        <div class="game-card-icon">
-                            <i class="fas fa-gun"></i>
-                        </div>
-                        <h4>Borderlands 3</h4>
-                        <p>Шутер с тоннами лута и юмором</p>
+                    <div class="game-item">
+                        <i class="fas fa-gun"></i>
+                        <span>Borderlands 3</span>
                     </div>
-                    
-                    <div class="game-card animate-on-scroll" data-animation="flipInX" data-delay="0.3">
-                        <div class="game-card-icon">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>Honkai Star Rail</h4>
-                        <p>Космическое RPG-приключение</p>
+                    <div class="game-item">
+                        <i class="fas fa-star"></i>
+                        <span>Honkai Star Rail</span>
                     </div>
-                    
-                    <div class="game-card animate-on-scroll" data-animation="flipInX" data-delay="0.4">
-                        <div class="game-card-icon">
-                            <i class="fas fa-user-secret"></i>
-                        </div>
-                        <h4>R.E.P.O.</h4>
-                        <p>Стелс-экшен с атмосферой</p>
+                    <div class="game-item">
+                        <i class="fas fa-user-secret"></i>
+                        <span>R.E.P.O.</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Секция "Мечты" -->
-    <section id="dreams" class="section dreams-section">
-        <div class="section-overlay"></div>
+    <!-- Мечты -->
+    <section id="dreams" class="section">
         <div class="container">
-            <div class="section-header animate-on-scroll" data-animation="fadeInUp">
-                <h2 class="section-title">
-                    <span class="title-decor">✨</span>
-                    Мои <span class="highlight">мечты</span>
-                    <span class="title-decor">✨</span>
-                </h2>
-                <p class="section-subtitle">К чему я стремлюсь в жизни</p>
-            </div>
+            <h2 class="section-title">Мои <span class="highlight">мечты</span></h2>
             
             <div class="dreams-timeline">
-                <div class="timeline-item animate-on-scroll" data-animation="fadeInRight" data-delay="0.1">
+                <div class="timeline-item">
                     <div class="timeline-year">2025</div>
                     <div class="timeline-content">
                         <h3>Сдать ЕГЭ на 100 баллов</h3>
-                        <p>Усердная подготовка, репетиторы и самоорганизация помогут достичь максимального результата.</p>
-                        <div class="timeline-progress">
-                            <div class="progress" style="width: 70%"></div>
-                        </div>
+                        <p>Усердная подготовка к экзаменам по биологии, химии и русскому языку.</p>
                     </div>
                 </div>
                 
-                <div class="timeline-item animate-on-scroll" data-animation="fadeInRight" data-delay="0.2">
+                <div class="timeline-item">
                     <div class="timeline-year">2025-2026</div>
                     <div class="timeline-content">
                         <h3>Поступить в медицинский университет</h3>
-                        <p>Стать студентом-медиком в Уфе и начать погружение в профессию.</p>
-                        <div class="timeline-progress">
-                            <div class="progress" style="width: 40%"></div>
-                        </div>
+                        <p>Стать студентом-медиком в Уфе и начать изучение профессии.</p>
                     </div>
                 </div>
                 
-                <div class="timeline-item animate-on-scroll" data-animation="fadeInRight" data-delay="0.3">
+                <div class="timeline-item">
                     <div class="timeline-year">2026-2030</div>
                     <div class="timeline-content">
                         <h3>Учёба и становление врачом</h3>
-                        <p>Освоить все медицинские дисциплины, пройти практику и стать квалифицированным специалистом.</p>
-                        <div class="timeline-progress">
-                            <div class="progress" style="width: 10%"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item animate-on-scroll" data-animation="fadeInRight" data-delay="0.4">
-                    <div class="timeline-year">После 2030</div>
-                    <div class="timeline-content">
-                        <h3>Помогать людям и развиваться</h3>
-                        <p>Работать врачом, постоянно совершенствоваться, возможно получить специализацию.</p>
-                        <div class="timeline-progress">
-                            <div class="progress" style="width: 5%"></div>
-                        </div>
+                        <p>Освоить медицинские дисциплины и стать квалифицированным специалистом.</p>
                     </div>
                 </div>
             </div>
             
-            <div class="final-quote animate-on-scroll" data-animation="zoomIn">
-                <div class="quote-container">
-                    <i class="fas fa-quote-left quote-start"></i>
-                    <p class="quote-text">Мечтать не вредно, вредно не мечтать. Я верю, что усердие, любовь к науке и поддержка семьи помогут мне достичь всех целей. Будущее начинается сегодня!</p>
-                    <i class="fas fa-quote-right quote-end"></i>
-                    <p class="quote-author">— Карина Бахтигареева</p>
+            <div class="dream-quote">
+                <i class="fas fa-quote-left"></i>
+                <p>"Мечтать не вредно, вредно не мечтать. Я верю, что усердие и поддержка семьи помогут мне достичь всех целей."</p>
+                <i class="fas fa-quote-right"></i>
+                <p class="quote-author">— Карина Бахтигареева</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Карина Бахтигареева</div>
+                <p>Будущий врач • Геймер • Мечтатель</p>
+                
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+                
+                <div class="footer-copyright">
+                    © 2025 Карина Бахтигареева. Все мечты сбудутся!
                 </div>
             </div>
         </div>
-        
-        <!-- Футер -->
-        <footer class="footer">
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-logo">
-                        <h3>Карина Бахтигареева</h3>
-                        <p>Будущий врач • Геймер • Мечтатель</p>
-                    </div>
-                    
-                    <div class="footer-info">
-                        <div class="info-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Уфа, Россия</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>11 класс • Биология/Химия</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-heart"></i>
-                            <span>Семья, игры, сладости</span>
-                        </div>
-                    </div>
-                    
-                    <div class="footer-social">
-                        <a href="#" class="social-btn">
-                            <i class="fab fa-vk"></i>
-                        </a>
-                        <a href="#" class="social-btn">
-                            <i class="fab fa-telegram"></i>
-                        </a>
-                        <a href="#" class="social-btn">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-btn">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                    
-                    <div class="footer-copyright">
-                        <p>© 2025 Карина Бахтигареева. Все мечты сбудутся! 🚀</p>
-                        <p class="footer-note">Сайт создан с любовью к медицине, играм и сладостям</p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </section>
+    </footer>
 
-    <!-- Скрипты -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
